@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise Gift Card 💖</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Patrick+Hand&family=Poppins:wght@400;600;800&family=Reenie+Beanie&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="heart-bg"></div>
+
+    <div id="laptop-container">
+        <div id="laptop-screen">
+            <div class="webcam"></div>
+            
+            <!-- SCENE 0: BLUE GINGHAM STARTING SCREEN WITH POPPING REAL BOUQUET -->
+            <div class="scene active" id="scene-intro" onclick="nextScene('acceptance')">
+                <!-- 4 Corner Blue Hearts -->
+                <div class="corner-heart top-left">♡</div>
+                <div class="corner-heart top-right">♡</div>
+                <div class="corner-heart bottom-left">♡</div>
+                <div class="corner-heart bottom-right">♡</div>
+
+                <!-- Arched Title Over Bouquet -->
+                <div class="arched-title-wrapper">
+                    <svg viewBox="0 0 600 230" class="arched-svg">
+                        <path id="text-curve" d="M 60,210 A 240,190 0 0,1 540,210" fill="transparent" />
+                        <text class="arched-text">
+                            <textPath xlink:href="#text-curve" startOffset="50%" text-anchor="middle">
+                                A Little Bouquet, A Lot of Love
+                            </textPath>
+                        </text>
+                    </svg>
+                </div>
+
+                <!-- Center Interactive Real Bouquet & "Tap Here" Arrow -->
+                <div class="intro-bouquet-center">
+                    <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9tZWRpYS9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8yOF93YXRlcmNvbG9yX2Zsb3dlcl9ib3VxdWV0X2lzb2xhdGVkX29uX3doaXRlX2JfYzFjNTM3NjUtYTg0MS00MmE0LWFkNzEtNzYzZDRlYzYxZjQ4LnBuZw.png" alt="Real Flower Bouquet" class="main-bouquet-img">
+                    <div class="tap-prompt">
+                        <span class="tap-text">tap here</span>
+                        <svg class="curved-arrow" viewBox="0 0 60 50">
+                            <path d="M 10,10 Q 35,10 40,35" fill="none" stroke="#0d47a1" stroke-width="2.5" stroke-linecap="round"/>
+                            <polygon points="34,33 40,45 47,34" fill="#0d47a1"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scene 1: Acceptance Question -->
+            <div class="scene" id="scene-acceptance">
+                <div class="scene-content">
+                    <h1 class="glow-title">WILL YOU ACCEPT MY GIFT?</h1>
+                    <p class="subtitle">POV: A special surprise just for you on Girlfriend's Day 💕</p>
+                    
+                    <div class="character-wrapper">
+                        <div class="cute-character">
+                            <div class="eye left"></div>
+                            <div class="eye right"></div>
+                            <div class="blush left"></div>
+                            <div class="blush right"></div>
+                            <div class="smile"></div>
+                            <div class="holding-heart">❤️</div>
+                        </div>
+                    </div>
+
+                    <div class="btn-group">
+                        <button class="btn btn-yes" onclick="nextScene('choices')">YES! ✨</button>
+                        <button class="btn btn-no" id="btn-no" onmouseover="moveButton()" onclick="moveButton()">NO 😜</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scene 2: Choose Gifts -->
+            <div class="scene" id="scene-choices">
+                <div class="scene-content">
+                    <h2>Pick Your First Surprise 🎁</h2>
+                    <p class="instruction">Choose one to open first!</p>
+
+                    <div class="choices-container">
+                        <div class="choice-card" onclick="selectGift(this, 'letter')">
+                            <div class="icon">✉️</div>
+                            <h3>Love Letter</h3>
+                        </div>
+                        <div class="choice-card" onclick="selectGift(this, 'bouquet')">
+                            <div class="icon">💐</div>
+                            <h3>Flowers</h3>
+                        </div>
+                        <div class="choice-card" onclick="selectGift(this, 'playlist')">
+                            <div class="icon">🎶</div>
+                            <h3>Our Song</h3>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-next hidden" id="btn-reveal" onclick="nextScene('memories')">Reveal Surprise ✨</button>
+                </div>
+            </div>
+
+            <!-- Scene 3: Letters & Memories -->
+            <div class="scene" id="scene-memories">
+                <div class="scene-content">
+                    <div class="polaroid-card">
+                        <div class="polaroid-img">
+                            <div class="heart-photo">💖</div>
+                        </div>
+                        <div class="polaroid-caption">
+                            <h3>To My Favorite Person</h3>
+                            <p>Every single moment with you is my absolute favorite. Thank you for being so amazing, sweet, and caring!</p>
+                        </div>
+                    </div>
+                    <button class="btn" onclick="nextScene('bouquet')">Build Your Bouquet 💐</button>
+                </div>
+            </div>
+
+            <!-- Scene 4: Interactive Bouquet -->
+            <div class="scene" id="scene-bouquet">
+                <div class="scene-content">
+                    <h2>Pick Flowers For Your Bouquet 🌸</h2>
+                    <p class="instruction">Tap flowers to add them to your wrap!</p>
+
+                    <div class="flower-picker">
+                        <span onclick="addFlower('🌹')">🌹</span>
+                        <span onclick="addFlower('🌸')">🌸</span>
+                        <span onclick="addFlower('🌷')">🌷</span>
+                        <span onclick="addFlower('🌻')">🌻</span>
+                        <span onclick="addFlower('🌺')">🌺</span>
+                        <span onclick="addFlower('✨')">✨</span>
+                    </div>
+
+                    <div class="bouquet-display" id="bouquet-display">
+                        <div class="bouquet-wrap">💐</div>
+                        <div class="flower-container" id="flower-container"></div>
+                    </div>
+
+                    <button class="btn" onclick="nextScene('song')">Listen to Our Song 🎵</button>
+                </div>
+            </div>
+
+            <!-- Scene 5: Music Player -->
+            <div class="scene" id="scene-song">
+                <div class="scene-content">
+                    <h2>I Love You So Much! ❤️</h2>
+                    
+                    <div class="music-player">
+                        <div class="album-art spinning" id="album-art">
+                            🎵
+                        </div>
+                        <div class="song-details">
+                            <h3 class="song-title">I Think They Call This Love</h3>
+                            <p class="artist-name">Elliot James Reay • <span style="color:#ff7675;">They Call This Love 💕</span></p>
+                        </div>
+                        <div class="player-controls">
+                            <button class="control-btn" onclick="toggleAudio()" id="play-pause-btn">⏸️</button>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="progress-bar"></div>
+                        </div>
+                    </div>
+
+                    <button class="btn" style="margin-top: 25px;" onclick="nextScene('scrapbook')">Next ➔</button>
+                </div>
+            </div>
+
+            <!-- Scene 6: EXACT CANVA WEBPAGE REPLICA WITH RESET BUTTON -->
+            <div class="scene" id="scene-scrapbook">
+                <!-- Top Canva Navigation -->
+                <div class="canva-header">
+                    <div class="nav-links">
+                        <span>Home</span>
+                        <span>Fav</span>
+                        <span>Surprise</span>
+                        <span>Letter</span>
+                    </div>
+                </div>
+
+                <!-- Giant Background Text -->
+                <div class="bg-love-text">LOVE</div>
+                
+                <!-- Collage Board -->
+                <div class="collage-board">
+                    <!-- Polaroid 1: Far Left -->
+                    <div class="item polaroid-frame pos-left-photo">
+                        <div class="photo">🛵👩‍❤️‍👨</div>
+                        <div class="heart-pattern">♥️ ♥️ ♥️ ♥️ ♥️ ♥️</div>
+                    </div>
+
+                    <!-- Lyric Card 1: Top Left -->
+                    <div class="item lyric-box dark-box pos-top-left-lyric">
+                        <div class="lyric-top">
+                            <span>🎵 I Like Me Better</span>
+                            <span>💖</span>
+                        </div>
+                        <div class="highlight-pill">Damn, I like me better when I'm with you 💕</div>
+                    </div>
+
+                    <!-- Lyric Card 2: Bottom Left -->
+                    <div class="item lyric-box white-box pos-bottom-left-lyric">
+                        <div class="lyric-top" style="color: #888;">we fell in love in oct...</div>
+                        <p class="lyric-text">
+                            <span class="red-circle">my girl</span>, my girl<br>
+                            you'll be my girl 💕<br>
+                            <span class="red-circle">my girl, my girl</span>
+                        </p>
+                    </div>
+
+                    <!-- Polaroid 2: Center Left -->
+                    <div class="item polaroid-frame pos-mid-left-photo">
+                        <div class="photo">🏖️👫</div>
+                        <div class="heart-pattern">♥️ ♥️ ♥️ ♥️ ♥️ ♥️</div>
+                    </div>
+
+                    <!-- Torn Note: Top Center -->
+                    <div class="item torn-note pos-top-note">
+                        p.s. i love u
+                    </div>
+
+                    <!-- Polaroid 3: Center Right -->
+                    <div class="item polaroid-frame pos-center-photo">
+                        <div class="photo">☕🥰</div>
+                        <div class="heart-pattern">♥️ ♥️ ♥️ ♥️ ♥️ ♥️</div>
+                    </div>
+
+                    <!-- Lyric Card 3: Bottom Center -->
+                    <div class="item lyric-box red-box pos-bottom-mid-lyric">
+                        <div class="lyric-top">♥️ Nothing • Bruno Major</div>
+                        <p class="lyric-text" style="font-size: 0.7rem; opacity: 0.9;">
+                            Dumb conversations<br>lose track of time...
+                        </p>
+                    </div>
+
+                    <!-- Lyric Card 4: Mid Right -->
+                    <div class="item lyric-box hot-pink-box pos-right-lyric">
+                        <div class="lyric-top">we fell in love in october 💕</div>
+                        <p class="lyric-text">
+                            You will be my world<br>
+                            My world, my world,<br>
+                            <span class="white-circle">my world</span>
+                        </p>
+                    </div>
+
+                    <!-- Polaroid 4: Far Right -->
+                    <div class="item polaroid-frame pos-right-photo">
+                        <div class="photo">😘👩‍❤️‍👨</div>
+                        <div class="heart-pattern">♥️ ♥️ ♥️ ♥️ ♥️ ♥️</div>
+                    </div>
+                </div>
+
+                <!-- FLOATING RESET BUTTON AT BOTTOM CENTER -->
+                <div class="reset-wrapper">
+                    <button class="btn-reset" onclick="resetApp()">Start Again 🔄</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Laptop Hardware Detailing -->
+        <div id="laptop-hinge"></div>
+        <div id="laptop-keyboard-base">
+            <div class="notch"></div>
+        </div>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="myAudio" loop>
+        <source src="they-call-this-love.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
