@@ -38,7 +38,17 @@
 
                 <!-- Center Interactive Real Bouquet & "Tap Here" Arrow -->
                 <div class="intro-bouquet-center">
-                    <img src="WhatsApp Image 2026-07-29 at 9.22.52 PM.jpeg "alt="Real Flower Bouquet" class="main-bouquet-img">
+                    <!-- Real Bouquet Image -->
+                    <img src="WhatsApp Image 2026-07-29 at 9.22.52 PM.jpeg" alt="Real Flower Bouquet" class="main-bouquet-img" onerror="this.src='flower-bouquet-pictures-k9kh3gkwjhd8zxvq.jpg'">
+                    
+                    <!-- Decorative Real SVG Blooming Flowers -->
+                    <div class="intro-flower-accent left-accent">
+                        <svg viewBox="0 0 100 160"><path d="M 50 65 Q 48 110 50 160" stroke="#2d6a4f" stroke-width="6"/><path d="M 22 48 C 15 23, 40 8, 50 20 C 60 8, 85 23, 78 48 C 70 68, 30 68, 22 48 Z" fill="#d50000"/><circle cx="50" cy="28" r="6" fill="#ff616f"/></svg>
+                    </div>
+                    <div class="intro-flower-accent right-accent">
+                        <svg viewBox="0 0 100 160"><path d="M 50 72 Q 52 115 50 160" stroke="#40916c" stroke-width="5"/><circle cx="50" cy="42" r="32" fill="#ff69b4"/><circle cx="50" cy="39" r="8" fill="#ffb703"/></svg>
+                    </div>
+
                     <div class="tap-prompt">
                         <span class="tap-text">tap here</span>
                         <svg class="curved-arrow" viewBox="0 0 60 50">
@@ -73,32 +83,45 @@
                 </div>
             </div>
 
-            <!-- Scene 2: Choose Gifts -->
+            <!-- Scene 2: Choose Gifts (5 Independent Gifts) -->
             <div class="scene" id="scene-choices">
                 <div class="scene-content">
-                    <h2>Pick Your First Surprise 🎁</h2>
-                    <p class="instruction">Choose one to open first!</p>
+                    <h2>Pick Your Surprise 🎁</h2>
+                    <p class="instruction">Tap any gift box to open its surprise immediately!</p>
 
                     <div class="choices-container">
-                        <div class="choice-card" onclick="selectGift(this, 'letter')">
+                        <div class="choice-card" data-gift="letter" data-index="0" onclick="selectGift(this, 'letter')">
                             <div class="icon">✉️</div>
                             <h3>Love Letter</h3>
+                            <span class="card-subtitle">Gift #1</span>
                         </div>
-                        <div class="choice-card" onclick="selectGift(this, 'bouquet')">
+                        <div class="choice-card" data-gift="bouquet" data-index="1" onclick="selectGift(this, 'bouquet')">
                             <div class="icon">💐</div>
                             <h3>Flowers</h3>
+                            <span class="card-subtitle">Gift #2</span>
                         </div>
-                        <div class="choice-card" onclick="selectGift(this, 'playlist')">
+                        <div class="choice-card" data-gift="song" data-index="2" onclick="selectGift(this, 'song')">
                             <div class="icon">🎶</div>
                             <h3>Our Song</h3>
+                            <span class="card-subtitle">Gift #3</span>
+                        </div>
+                        <div class="choice-card" data-gift="photos" data-index="3" onclick="selectGift(this, 'photos')">
+                            <div class="icon">📸</div>
+                            <h3>Memories</h3>
+                            <span class="card-subtitle">Gift #4</span>
+                        </div>
+                        <div class="choice-card" data-gift="secret" data-index="4" onclick="selectGift(this, 'secret')">
+                            <div class="icon">🎁</div>
+                            <h3>Secret Note</h3>
+                            <span class="card-subtitle">Gift #5</span>
                         </div>
                     </div>
 
-                    <button class="btn btn-next hidden" id="btn-reveal" onclick="nextScene('memories')">Reveal Surprise ✨</button>
+                    <button class="btn btn-secondary" onclick="nextScene('scrapbook')">View Scrapbook ✨</button>
                 </div>
             </div>
 
-            <!-- Scene 3: Letters & Memories -->
+            
             <div class="scene" id="scene-memories">
                 <div class="scene-content">
                     <div class="polaroid-card">
@@ -110,31 +133,65 @@
                             <p>Every single moment with you is my absolute favorite. Thank you for being so amazing, sweet, and caring!</p>
                         </div>
                     </div>
-                    <button class="btn" onclick="nextScene('bouquet')">Build Your Bouquet 💐</button>
+                    <div class="btn-group">
+                        <button class="btn btn-secondary" onclick="nextScene('choices')">🎁 Back to Gifts</button>
+                        <button class="btn" onclick="nextScene('scrapbook')">See Scrapbook ✨</button>
+                    </div>
                 </div>
             </div>
 
-            <!-- Scene 4: Interactive Bouquet -->
+            
             <div class="scene" id="scene-bouquet">
-                <div class="scene-content">
-                    <h2>Pick Flowers For Your Bouquet 🌸</h2>
-                    <p class="instruction">Tap flowers to add them to your wrap!</p>
+                <div class="scene-content bouquet-studio-content">
+                    <h2>Craft Your Real Flower Bouquet 🌸</h2>
+                    <p class="instruction">Tap high-quality flowers to arrange a custom bouquet! (Tap bouquet flowers to remove)</p>
 
-                    <div class="flower-picker">
-                        <span onclick="addFlower('🌹')">🌹</span>
-                        <span onclick="addFlower('🌸')">🌸</span>
-                        <span onclick="addFlower('🌷')">🌷</span>
-                        <span onclick="addFlower('🌻')">🌻</span>
-                        <span onclick="addFlower('🌺')">🌺</span>
-                        <span onclick="addFlower('✨')">✨</span>
+                    <div class="flower-picker-grid">
+                        <div class="flower-pick-btn" onclick="addFlowerToBouquet('rose')">
+                            <div class="svg-thumb"><svg viewBox="0 0 100 160"><path d="M 50 65 Q 48 110 50 160" stroke="#2d6a4f" stroke-width="6"/><path d="M 22 48 C 15 23, 40 8, 50 20 C 60 8, 85 23, 78 48 C 70 68, 30 68, 22 48 Z" fill="#d50000"/><circle cx="50" cy="28" r="6" fill="#ff616f"/></svg></div>
+                            <span>Rose</span>
+                        </div>
+                        <div class="flower-pick-btn" onclick="addFlowerToBouquet('peony')">
+                            <div class="svg-thumb"><svg viewBox="0 0 100 160"><path d="M 50 72 Q 52 115 50 160" stroke="#40916c" stroke-width="5"/><circle cx="50" cy="42" r="32" fill="#ff69b4"/><circle cx="50" cy="39" r="8" fill="#ffb703"/></svg></div>
+                            <span>Peony</span>
+                        </div>
+                        <div class="flower-pick-btn" onclick="addFlowerToBouquet('sunflower')">
+                            <div class="svg-thumb"><svg viewBox="0 0 100 160"><path d="M 50 68 Q 48 110 50 160" stroke="#2d6a4f" stroke-width="6"/><circle cx="50" cy="42" r="34" fill="#ffaa00"/><circle cx="50" cy="42" r="16" fill="#4a1508"/></svg></div>
+                            <span>Sunflower</span>
+                        </div>
+                        <div class="flower-pick-btn" onclick="addFlowerToBouquet('orchid')">
+                            <div class="svg-thumb"><svg viewBox="0 0 100 160"><path d="M 50 68 Q 60 110 50 160" stroke="#38b000" stroke-width="4"/><ellipse cx="32" cy="34" rx="16" ry="13" fill="#7209b7"/><ellipse cx="68" cy="34" rx="16" ry="13" fill="#7209b7"/><path d="M 39 46 Q 50 62 61 46 Z" fill="#ff007f"/></svg></div>
+                            <span>Orchid</span>
+                        </div>
+                        <div class="flower-pick-btn" onclick="addFlowerToBouquet('daisy')">
+                            <div class="svg-thumb"><svg viewBox="0 0 100 160"><path d="M 50 66 Q 48 110 50 160" stroke="#70e000" stroke-width="4"/><circle cx="50" cy="40" r="30" fill="#ffffff" stroke="#ccc" stroke-width="1"/><circle cx="50" cy="40" r="10" fill="#ffc300"/></svg></div>
+                            <span>Daisy</span>
+                        </div>
+                        <div class="flower-pick-btn" onclick="addFlowerToBouquet('hydrangea')">
+                            <div class="svg-thumb"><svg viewBox="0 0 100 160"><path d="M 50 75 Q 50 115 50 160" stroke="#2b9348" stroke-width="5"/><circle cx="50" cy="40" r="30" fill="#4361ee"/></svg></div>
+                            <span>Hydrangea</span>
+                        </div>
                     </div>
 
-                    <div class="bouquet-display" id="bouquet-display">
-                        <div class="bouquet-wrap">💐</div>
-                        <div class="flower-container" id="flower-container"></div>
+                    <div class="bouquet-wrapper-stage">
+                        <div class="bouquet-wrap-back"></div>
+                        <div class="bouquet-flowers-stage" id="bouquet-flowers-stage"></div>
+                        <div class="bouquet-wrap-front">
+                            <div class="ribbon-bow">🎀</div>
+                        </div>
                     </div>
 
-                    <button class="btn" onclick="nextScene('song')">Listen to Our Song 🎵</button>
+                    <!-- Bouquet Toolbar & Controls -->
+                    <div class="bouquet-controls-bar">
+                        <span class="bouquet-count-badge" id="bouquet-count">0 / 12 Flowers</span>
+                        <button class="btn-sm" onclick="addPresetBouquet()">Full Bouquet 💐</button>
+                        <button class="btn-sm btn-outline" onclick="clearBouquet()">Clear 🗑️</button>
+                    </div>
+
+                    <div class="btn-group" style="margin-top: 10px;">
+                        <button class="btn btn-secondary" onclick="nextScene('choices')">🎁 Back to Gifts</button>
+                        <button class="btn" onclick="nextScene('scrapbook')">See Scrapbook ✨</button>
+                    </div>
                 </div>
             </div>
 
@@ -159,7 +216,60 @@
                         </div>
                     </div>
 
-                    <button class="btn" style="margin-top: 25px;" onclick="nextScene('scrapbook')">Next ➔</button>
+                    <div class="btn-group" style="margin-top: 25px;">
+                        <button class="btn btn-secondary" onclick="nextScene('choices')">🎁 Back to Gifts</button>
+                        <button class="btn" onclick="nextScene('scrapbook')">See Scrapbook ✨</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scene 6: Photo Memories Surprise (Gift #4) -->
+            <div class="scene" id="scene-photos">
+                <div class="scene-content">
+                    <h2>Our Special Memories 📸</h2>
+                    <p class="instruction">Moments that mean the world to me 💕</p>
+
+                    <div class="photo-gallery-grid">
+                        <div class="photo-card-item">
+                            <div class="photo-frame">🛵👩‍❤️‍👨</div>
+                            <p>Sunset Rides</p>
+                        </div>
+                        <div class="photo-card-item">
+                            <div class="photo-frame">🏖️👫</div>
+                            <p>Beach Walks</p>
+                        </div>
+                        <div class="photo-card-item">
+                            <div class="photo-frame">☕🥰</div>
+                            <p>Coffee Dates</p>
+                        </div>
+                    </div>
+
+                    <div class="btn-group" style="margin-top: 20px;">
+                        <button class="btn btn-secondary" onclick="nextScene('choices')">🎁 Back to Gifts</button>
+                        <button class="btn" onclick="nextScene('scrapbook')">See Scrapbook ✨</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scene 7: Secret Love Coupon Surprise (Gift #5) -->
+            <div class="scene" id="scene-secret">
+                <div class="scene-content">
+                    <h2>Your Secret Gift 🎁✨</h2>
+                    <p class="instruction">Redeemable anytime for your favorite person!</p>
+
+                    <div class="coupon-card">
+                        <div class="coupon-header">OFFICIAL LOVE COUPON 💖</div>
+                        <div class="coupon-body">
+                            <h3>Good For 100,000 Hugs & A Cute Date Night 🍿👩‍❤️‍👨</h3>
+                            <p>Valid forever • Non-refundable • Unlimited extra kisses included!</p>
+                        </div>
+                        <div class="coupon-stamp">APPROVED 💕</div>
+                    </div>
+
+                    <div class="btn-group" style="margin-top: 20px;">
+                        <button class="btn btn-secondary" onclick="nextScene('choices')">🎁 Back to Gifts</button>
+                        <button class="btn" onclick="nextScene('scrapbook')">See Scrapbook ✨</button>
+                    </div>
                 </div>
             </div>
 
