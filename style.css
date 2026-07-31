@@ -565,7 +565,8 @@ h1, h2 {
     border-radius: 8px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     transform: rotate(-3deg);
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
 }
 
 .photo-card-item:nth-child(2) { transform: rotate(4deg); }
@@ -574,6 +575,7 @@ h1, h2 {
 .photo-card-item:hover {
     transform: scale(1.1) rotate(0deg);
     z-index: 10;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
 }
 
 .photo-frame {
@@ -638,6 +640,11 @@ h1, h2 {
 .polaroid-card {
     background: white; padding: 15px 15px 25px 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     transform: rotate(-2deg); max-width: 300px; margin-bottom: 25px; border-radius: 4px;
+    cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.polaroid-card:hover {
+    transform: scale(1.05) rotate(0deg);
+    box-shadow: 0 18px 35px rgba(0,0,0,0.25);
 }
 .polaroid-img { background: #ffeaa7; height: 180px; display: flex; justify-content: center; align-items: center; font-size: 4rem; border-radius: 2px; }
 .polaroid-caption h3 { font-family: 'Dancing Script', cursive; font-size: 1.8rem; margin-top: 15px; }

@@ -458,9 +458,9 @@ function openPhotoModal(imgSrc, captionTitle, songTitle, artistName) {
     if (!modal) return;
 
     if (modalImg) modalImg.src = imgSrc;
-    if (modalCaption) modalCaption.innerText = captionTitle;
-    if (modalSongTitle) modalSongTitle.innerText = songTitle;
-    if (modalArtist) modalArtist.innerText = artistName;
+    if (modalCaption) modalCaption.innerText = captionTitle || "Special Memory 💕";
+    if (modalSongTitle) modalSongTitle.innerText = songTitle || "They Call This Love";
+    if (modalArtist) modalArtist.innerText = artistName || "Elliot James Reay";
 
     modal.classList.add("active");
 
@@ -481,6 +481,13 @@ function closePhotoModal() {
         modal.classList.remove("active");
     }
 }
+
+// Close photo modal when pressing Escape key
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+        closePhotoModal();
+    }
+});
 
 // Audio Progress Sync & Main Lyrics Looper
 document.addEventListener("DOMContentLoaded", () => {
