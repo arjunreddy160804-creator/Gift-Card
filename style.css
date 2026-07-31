@@ -863,3 +863,190 @@ h1, h2 {
 @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
 @keyframes spin { 100% { transform: rotate(360deg); } }
+
+/* ==========================================
+   MOBILE & SMALL SCREEN RESPONSIVE STYLING
+   ========================================== */
+@media (max-width: 768px) {
+    body {
+        padding: 5px;
+        overflow-y: auto;
+    }
+
+    #laptop-container {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    #laptop-screen {
+        height: 92vh;
+        max-height: 640px;
+        border-width: 8px;
+        border-radius: 14px;
+        overflow-y: auto;
+    }
+
+    #laptop-keyboard-base, #laptop-hinge {
+        display: none; /* Hide hardware laptop base on mobile phones for maximum screen space */
+    }
+
+    .scene {
+        padding: 12px 8px;
+        overflow-y: auto;
+    }
+
+    h1, h2 {
+        font-size: 1.7rem;
+        margin-bottom: 4px;
+    }
+
+    .instruction, .subtitle {
+        font-size: 0.82rem;
+        margin-bottom: 8px;
+    }
+
+    /* Mobile Flower Picker Horizontal Scroll Bar */
+    .flower-picker-grid {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        justify-content: flex-start;
+        width: 98%;
+        max-width: 360px;
+        padding: 6px 10px;
+        gap: 8px;
+        margin-bottom: 6px;
+        border-radius: 20px;
+        scrollbar-width: none;
+    }
+
+    .flower-picker-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .flower-pick-btn {
+        flex: 0 0 auto;
+        padding: 4px 8px;
+        min-width: 52px;
+        touch-action: manipulation;
+    }
+
+    .flower-pick-btn:active {
+        transform: scale(0.92);
+        background: #ffccd5;
+    }
+
+    .svg-thumb {
+        width: 28px;
+        height: 38px;
+    }
+
+    .flower-pick-btn span {
+        font-size: 0.68rem;
+    }
+
+    /* Mobile Bouquet Canvas Stage */
+    .bouquet-wrapper-stage {
+        width: 230px;
+        height: 175px;
+        margin: 2px auto;
+    }
+
+    .bouquet-wrap-back {
+        width: 150px;
+        height: 150px;
+    }
+
+    .bouquet-wrap-front {
+        width: 140px;
+        height: 85px;
+    }
+
+    .ribbon-bow {
+        font-size: 1.8rem;
+    }
+
+    .bouquet-flower-item {
+        width: 70px;
+        height: 110px;
+        touch-action: manipulation;
+    }
+
+    .bouquet-flower-item:active {
+        transform: translate(-50%, -50%) scale(1.2) !important;
+    }
+
+    .bouquet-controls-bar {
+        margin: 4px 0;
+        gap: 6px;
+    }
+
+    .bouquet-count-badge {
+        font-size: 0.75rem;
+        padding: 3px 8px;
+    }
+
+    .btn-sm {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+        touch-action: manipulation;
+    }
+
+    .btn-sm:active {
+        transform: scale(0.95);
+    }
+
+    .btn {
+        padding: 8px 18px;
+        font-size: 0.9rem;
+        margin: 4px;
+        touch-action: manipulation;
+    }
+
+    .btn-group {
+        gap: 6px;
+        margin-top: 6px !important;
+    }
+
+    /* 5 Gift Cards Layout on Mobile */
+    .choices-container {
+        gap: 8px;
+        margin-bottom: 12px;
+    }
+
+    .choice-card {
+        width: 100px;
+        padding: 10px 6px;
+    }
+
+    .choice-card .icon {
+        font-size: 1.8rem;
+        margin-bottom: 4px;
+    }
+
+    .choice-card h3 {
+        font-size: 0.8rem;
+    }
+
+    /* Photo Gallery Grid on Mobile */
+    .photo-gallery-grid {
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .photo-card-item {
+        width: 90px;
+        padding: 6px 6px 10px 6px;
+    }
+
+    .photo-frame {
+        width: 78px;
+        height: 78px;
+    }
+
+    .photo-card-item p {
+        font-size: 0.65rem;
+    }
+}
