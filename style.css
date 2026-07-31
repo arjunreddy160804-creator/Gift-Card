@@ -1049,4 +1049,130 @@ h1, h2 {
     .photo-card-item p {
         font-size: 0.65rem;
     }
+
+    /* Mobile Canva Scrapbook Responsive Collage */
+    .scene#scene-scrapbook {
+        overflow-y: auto !important;
+        display: block !important;
+    }
+
+    .collage-board {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        position: relative !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        padding: 45px 10px 80px 10px !important;
+        gap: 14px !important;
+        z-index: 5 !important;
+    }
+
+    .collage-board .item {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        margin: 4px 0 !important;
+        z-index: 10 !important;
+    }
+
+    .collage-board .item.polaroid-frame {
+        width: 170px !important;
+        transform: rotate(-2deg) !important;
+    }
+
+    .collage-board .item.polaroid-frame:nth-child(even) {
+        transform: rotate(2deg) !important;
+    }
+
+    .collage-board .lyric-box {
+        width: 200px !important;
+    }
+
+    .bg-love-text {
+        font-size: 7rem !important;
+        opacity: 0.12 !important;
+        position: fixed !important;
+    }
+
+    .reset-wrapper {
+        position: fixed !important;
+        bottom: 15px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        z-index: 120 !important;
+    }
+}
+
+/* ==========================================
+   SPOTIFY MINI PLAY BAR STYLING
+   ========================================== */
+.spotify-mini-bar {
+    background: #121212;
+    border-radius: 8px;
+    padding: 4px 7px;
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.spotify-mini-bar:hover, .spotify-mini-bar:active {
+    transform: scale(1.04);
+    background: #191414;
+}
+
+.spotify-left {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    overflow: hidden;
+}
+
+.spotify-icon {
+    font-size: 0.72rem;
+    line-height: 1;
+}
+
+.spotify-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    overflow: hidden;
+}
+
+.spotify-text .song-name {
+    color: #1DB954;
+    font-size: 0.58rem;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.1;
+}
+
+.spotify-text .artist-name {
+    color: #b3b3b3;
+    font-size: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1;
+}
+
+.spotify-play-btn {
+    background: none;
+    border: none;
+    font-size: 0.75rem;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 4px;
 }

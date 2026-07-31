@@ -424,6 +424,7 @@ function toggleAudio() {
     const audio = document.getElementById("myAudio");
     const playBtn = document.getElementById("play-pause-btn");
     const albumArt = document.getElementById("album-art");
+    const spotifyBtns = document.querySelectorAll(".spotify-play-btn");
 
     if (!audio) return;
 
@@ -434,10 +435,12 @@ function toggleAudio() {
         audio.play();
         if (playBtn) playBtn.innerText = "⏸️";
         if (albumArt) albumArt.classList.add("spinning");
+        spotifyBtns.forEach(btn => btn.innerText = "⏸️");
     } else {
         audio.pause();
         if (playBtn) playBtn.innerText = "▶️";
         if (albumArt) albumArt.classList.remove("spinning");
+        spotifyBtns.forEach(btn => btn.innerText = "▶️");
     }
 }
 
