@@ -297,11 +297,11 @@
                 <!-- Collage Board -->
                 <div class="collage-board">
                     <!-- Polaroid 1: Far Left -->
-                    <div class="item polaroid-frame pos-left-photo">
+                    <div class="item polaroid-frame pos-left-photo" onclick="openPhotoModal(this.querySelector('img').src, 'Childhood Days 🎭', 'I Like Me Better', 'Lauv')">
                         <div class="photo">
                             <img src="photo1.jpg" alt="Childhood Drama" class="fit-frame-img" onerror="this.src='C:/Users/Bharadwaja/.gemini/antigravity/brain/191af217-4539-444d-9a01-33b7c251b246/.user_uploaded/media__1785509384592.jpg'">
                         </div>
-                        <div class="spotify-mini-bar" onclick="toggleAudio(); event.stopPropagation();" title="Play / Pause Song">
+                        <div class="spotify-mini-bar" onclick="event.stopPropagation(); openPhotoModal(this.closest('.polaroid-frame').querySelector('img').src, 'Childhood Days 🎭', 'I Like Me Better', 'Lauv');" title="Play Song & View Photo">
                             <div class="spotify-left">
                                 <span class="spotify-icon">🟢</span>
                                 <div class="spotify-text">
@@ -333,11 +333,11 @@
                     </div>
 
                     <!-- Polaroid 2: Center Left -->
-                    <div class="item polaroid-frame pos-mid-left-photo">
+                    <div class="item polaroid-frame pos-mid-left-photo" onclick="openPhotoModal(this.querySelector('img').src, 'Traditional Glow ✨', 'We Fell in Love in October', 'Girl in Red')">
                         <div class="photo">
                             <img src="photo4.jpg" alt="Traditional Saree" class="fit-frame-img" onerror="this.src='C:/Users/Bharadwaja/.gemini/antigravity/brain/191af217-4539-444d-9a01-33b7c251b246/.user_uploaded/media__1785509384717.jpg'">
                         </div>
-                        <div class="spotify-mini-bar" onclick="toggleAudio(); event.stopPropagation();" title="Play / Pause Song">
+                        <div class="spotify-mini-bar" onclick="event.stopPropagation(); openPhotoModal(this.closest('.polaroid-frame').querySelector('img').src, 'Traditional Glow ✨', 'We Fell in Love in October', 'Girl in Red');" title="Play Song & View Photo">
                             <div class="spotify-left">
                                 <span class="spotify-icon">🟢</span>
                                 <div class="spotify-text">
@@ -355,11 +355,11 @@
                     </div>
 
                     <!-- Polaroid 3: Center Right -->
-                    <div class="item polaroid-frame pos-center-photo">
+                    <div class="item polaroid-frame pos-center-photo" onclick="openPhotoModal(this.querySelector('img').src, 'To My Favorite Person 💕', 'They Call This Love', 'Elliot James Reay')">
                         <div class="photo">
                             <img src="photo2.jpg" alt="Orange Saree Portrait" class="fit-frame-img" onerror="this.src='C:/Users/Bharadwaja/.gemini/antigravity/brain/191af217-4539-444d-9a01-33b7c251b246/.user_uploaded/media__1785509384704.jpg'">
                         </div>
-                        <div class="spotify-mini-bar" onclick="toggleAudio(); event.stopPropagation();" title="Play / Pause Song">
+                        <div class="spotify-mini-bar" onclick="event.stopPropagation(); openPhotoModal(this.closest('.polaroid-frame').querySelector('img').src, 'To My Favorite Person 💕', 'They Call This Love', 'Elliot James Reay');" title="Play Song & View Photo">
                             <div class="spotify-left">
                                 <span class="spotify-icon">🟢</span>
                                 <div class="spotify-text">
@@ -390,11 +390,11 @@
                     </div>
 
                     <!-- Polaroid 4: Far Right -->
-                    <div class="item polaroid-frame pos-right-photo">
+                    <div class="item polaroid-frame pos-right-photo" onclick="openPhotoModal(this.querySelector('img').src, 'Sweetest Smile 🥰', 'Nothing', 'Bruno Major')">
                         <div class="photo">
                             <img src="photo3.jpg" alt="Purple Dress Portrait" class="fit-frame-img" onerror="this.src='C:/Users/Bharadwaja/.gemini/antigravity/brain/191af217-4539-444d-9a01-33b7c251b246/.user_uploaded/media__1785509384709.jpg'">
                         </div>
-                        <div class="spotify-mini-bar" onclick="toggleAudio(); event.stopPropagation();" title="Play / Pause Song">
+                        <div class="spotify-mini-bar" onclick="event.stopPropagation(); openPhotoModal(this.closest('.polaroid-frame').querySelector('img').src, 'Sweetest Smile 🥰', 'Nothing', 'Bruno Major');" title="Play Song & View Photo">
                             <div class="spotify-left">
                                 <span class="spotify-icon">🟢</span>
                                 <div class="spotify-text">
@@ -419,6 +419,27 @@
         <div id="laptop-hinge"></div>
         <div id="laptop-keyboard-base">
             <div class="notch"></div>
+        </div>
+    </div>
+
+    <!-- PHOTO & SONG MODAL OVERLAY -->
+    <div id="photo-modal" class="photo-modal-overlay" onclick="closePhotoModal()">
+        <div class="photo-modal-card" onclick="event.stopPropagation()">
+            <button class="modal-close-btn" onclick="closePhotoModal()">✕</button>
+            <div class="modal-img-wrapper">
+                <img id="modal-img" src="" alt="Enlarged Photo">
+            </div>
+            <div class="modal-details">
+                <h3 id="modal-caption">Special Memory 💕</h3>
+                <div class="modal-spotify-player">
+                    <div class="modal-disc" id="modal-disc">🎵</div>
+                    <div class="modal-song-info">
+                        <span class="modal-song-title" id="modal-song-title">Song Title</span>
+                        <span class="modal-artist" id="modal-artist">Artist Name</span>
+                    </div>
+                    <button class="modal-play-btn" id="modal-play-btn" onclick="toggleAudio()">▶️</button>
+                </div>
+            </div>
         </div>
     </div>
 

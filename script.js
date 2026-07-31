@@ -444,6 +444,44 @@ function toggleAudio() {
     }
 }
 
+// ==========================================
+// PHOTO MODAL & SPECIFIC SONG PLAYER SYSTEM
+// ==========================================
+function openPhotoModal(imgSrc, captionTitle, songTitle, artistName) {
+    const modal = document.getElementById("photo-modal");
+    const modalImg = document.getElementById("modal-img");
+    const modalCaption = document.getElementById("modal-caption");
+    const modalSongTitle = document.getElementById("modal-song-title");
+    const modalArtist = document.getElementById("modal-artist");
+    const modalPlayBtn = document.getElementById("modal-play-btn");
+
+    if (!modal) return;
+
+    if (modalImg) modalImg.src = imgSrc;
+    if (modalCaption) modalCaption.innerText = captionTitle;
+    if (modalSongTitle) modalSongTitle.innerText = songTitle;
+    if (modalArtist) modalArtist.innerText = artistName;
+
+    modal.classList.add("active");
+
+    // Play the specific song!
+    const audio = document.getElementById("myAudio");
+    if (audio) {
+        audio.currentTime = CHORUS_START_TIME;
+        audio.play().then(() => {
+            if (modalPlayBtn) modalPlayBtn.innerText = "⏸️";
+            document.querySelectorAll(".spotify-play-btn").forEach(btn => btn.innerText = "⏸️");
+        }).catch(err => console.log("Audio play caught:", err));
+    }
+}
+
+function closePhotoModal() {
+    const modal = document.getElementById("photo-modal");
+    if (modal) {
+        modal.classList.remove("active");
+    }
+}
+
 // Audio Progress Sync & Main Lyrics Looper
 document.addEventListener("DOMContentLoaded", () => {
     const audio = document.getElementById("myAudio");
